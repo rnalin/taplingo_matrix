@@ -212,7 +212,7 @@ class FetchCurrentUserUseCase implements FetchCurrentUserInputPort {
  this ServiceLocatorConfig.provide() returns for us a GetIt instance. And getting the information that we need.
  
  
- ## Ok, I Understand that... but how can a input port be a usecase?
+ ## Ok, I Understand that... but how can a input port represents an usecase?
  
  well, we have a Module File  on this project that binds an input port with a use case and an output port with a repository.
  
@@ -236,4 +236,9 @@ abstract class OnboardingCoreModule {
  ```
  
  doing it and after you generate the command to generate .g, it will modify the service_locator_config.config.dart file. This file binds every port in the project automatically
+
+ ## Good To Know
+ - Always use Stream instead a Future
+ - To convert a Stream into a Future, use Stream.fromFuture() instead of "as stream"
+ 
  
