@@ -1,30 +1,27 @@
 import 'package:flutter/widgets.dart';
 import 'package:taplingo_matrix/core/routes/navigation_route.dart';
 import 'package:taplingo_matrix/core/routes/route_transition.dart';
-import 'package:taplingo_matrix/core/service_locator/service_locator_config.dart';
-import 'package:taplingo_matrix/modules/onboarding/ui/onboarding_screen.dart';
+import 'package:taplingo_matrix/modules/login/ui/login_screen.dart';
 
-class OnboardingRoute extends NavigationRoute {
-  static String path = "/onboarding";
+class SplashRoute extends NavigationRoute {
+  static String path = "/splash";
 
-  OnboardingRoute._(Route<Object> route)
+  SplashRoute._(Route<Object> route)
       : super(
           path,
           route,
           fullScreen: true,
         );
 
-  static OnboardingRoute of({
+  static SplashRoute of({
     Duration? transitionDuration,
     RouteTransitionsBuilder? transitionsBuilder,
     bool animated = true,
   }) {
-    OnboardingScreen _screen = OnboardingScreen(
-      fetchOnboardingInputPort: ServiceLocatorConfig.provide(),
-    );
+    const LoginScreen _screen = LoginScreen();
 
     if (animated) {
-      return OnboardingRoute._(
+      return SplashRoute._(
         PageRouteBuilder(
           settings: RouteSettings(name: path),
           pageBuilder: (
@@ -41,7 +38,7 @@ class OnboardingRoute extends NavigationRoute {
       );
     }
 
-    return OnboardingRoute._(
+    return SplashRoute._(
       PageRouteBuilder(
         settings: RouteSettings(name: path),
         pageBuilder: (

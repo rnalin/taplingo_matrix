@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:taplingo_matrix/core/initializer.dart';
 import 'package:taplingo_matrix/core/routes/app_navigator.dart';
 import 'package:taplingo_matrix/core/routes/routes.dart';
-import 'package:taplingo_matrix/modules/onboarding/navigation/routes/onboarding_route.dart';
-import 'package:taplingo_matrix/modules/onboarding/ui/onboarding_screen.dart';
+import 'package:taplingo_matrix/modules/splash/navigation/route/splash_route.dart';
 
 void main() {
+  Initializer.initialize();
+
   runApp(const MyApp());
 }
 
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       navigatorKey: AppNavigator.navigatorKey,
-      initialRoute: OnboardingRoute.path,
+      initialRoute: SplashRoute.path,
       onGenerateRoute: Routes.generateRoute(false),
     );
   }
