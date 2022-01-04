@@ -14,35 +14,38 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: const Text('Onboarding'),
+        ),
         body: StreamBuilder<List<Onboarding>>(
-      stream: fetchOnboardingInputPort.fetchOnboarding(),
-      builder: (context, snapshot) {
-        final onboarding = snapshot.data;
+          stream: fetchOnboardingInputPort.fetchOnboarding(),
+          builder: (context, snapshot) {
+            final onboarding = snapshot.data;
 
-        if (onboarding == null) {
-          return _loading();
-        }
+            if (onboarding == null) {
+              return _loading();
+            }
 
-        return ListView.builder(
-          itemCount: onboarding.length,
-          itemBuilder: (context, index) {
-            final item = onboarding[index];
+            return ListView.builder(
+              itemCount: onboarding.length,
+              itemBuilder: (context, index) {
+                final item = onboarding[index];
 
-            return InkWell(
-              onTap: _redirectToLogin,
-              child: ListTile(
-                title: Text(item.title),
-                subtitle: Text(item.description),
-                trailing: IconButton(
-                  icon: const Icon(Icons.arrow_forward_ios),
-                  onPressed: _redirectToLogin,
-                ),
-              ),
+                return InkWell(
+                  onTap: _redirectToLogin,
+                  child: ListTile(
+                    title: Text(item.title),
+                    subtitle: Text(item.description),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.arrow_forward_ios),
+                      onPressed: _redirectToLogin,
+                    ),
+                  ),
+                );
+              },
             );
           },
-        );
-      },
-    ));
+        ));
   }
 
   void _redirectToLogin() {
