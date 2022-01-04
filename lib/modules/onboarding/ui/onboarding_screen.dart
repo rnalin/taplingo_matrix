@@ -3,6 +3,8 @@ import 'package:taplingo_matrix/core/domain/onboarding.dart';
 import 'package:taplingo_matrix/core/ports/input/fetch_onboarding_input_port.dart';
 import 'package:taplingo_matrix/modules/onboarding/navigation/directions/onboarding_screen_directions.dart';
 
+part './components/onboarding_item.dart';
+
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({
     required this.fetchOnboardingInputPort,
@@ -29,18 +31,9 @@ class OnboardingScreen extends StatelessWidget {
             return ListView.builder(
               itemCount: onboarding.length,
               itemBuilder: (context, index) {
-                final item = onboarding[index];
-
-                return InkWell(
+                return _OnboardingItem(
+                  onboarding: onboarding[index],
                   onTap: _redirectToLogin,
-                  child: ListTile(
-                    title: Text(item.title),
-                    subtitle: Text(item.description),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.arrow_forward_ios),
-                      onPressed: _redirectToLogin,
-                    ),
-                  ),
                 );
               },
             );
