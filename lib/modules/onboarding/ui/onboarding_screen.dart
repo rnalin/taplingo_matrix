@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taplingo_matrix/core/domain/entities/onboarding_entity.dart';
 import 'package:taplingo_matrix/core/domain/onboarding.dart';
 import 'package:taplingo_matrix/core/ports/input/fetch_onboarding_input_port.dart';
 import 'package:taplingo_matrix/modules/onboarding/navigation/directions/onboarding_screen_directions.dart';
@@ -31,10 +32,10 @@ class OnboardingScreen extends StatelessWidget {
             return ListView.builder(
               itemCount: onboarding.length,
               itemBuilder: (context, index) {
-                return _OnboardingItem(
-                  onboarding: onboarding[index],
-                  onTap: _redirectToLogin,
-                );
+                return OnboardingItem(
+                    onboarding: onboarding[index],
+                    onTap: () =>
+                        _redirectToOnboardingDetails(onboarding[index]));
               },
             );
           },
@@ -43,6 +44,10 @@ class OnboardingScreen extends StatelessWidget {
 
   void _redirectToLogin() {
     OnboardingScreenDirections(this).goToLogin();
+  }
+
+  void _redirectToOnboardingDetails(OnboardingEntity onboarding) {
+    OnboardingScreenDirections(this).goToOnboardingDetails(onboarding);
   }
 
   Widget _loading() {

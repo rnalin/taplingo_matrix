@@ -1,7 +1,7 @@
 part of 'package:taplingo_matrix/modules/onboarding/ui/onboarding_screen.dart';
 
-class _OnboardingItem extends StatelessWidget {
-  const _OnboardingItem({
+class OnboardingItem extends StatelessWidget {
+  const OnboardingItem({
     required this.onboarding,
     required this.onTap,
     Key? key,
