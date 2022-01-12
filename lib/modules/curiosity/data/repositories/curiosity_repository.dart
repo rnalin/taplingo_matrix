@@ -15,17 +15,19 @@ class CuriosityRepository implements GetMarsImagesOutputPort {
 
   @override
   Stream<List<CuriosityModel>> getMarsImages() async* {
-    Stream<HttpResponse> responses = await client
+    Stream<HttpResponse> responses = client
         .get((CuriosityEndpoints.getMarsImagesURL(NasaKeys.apiKey)).toString());
     HttpResponse response = await responses.first;
     if (response.statusCode == 200) {
-      Map<String, dynamic> data =
-          Map<String, dynamic>.from(json.decode(response.data));
-      List<CuriosityModel> curiosityModel = (data['photos'] as List)
-          .map((e) => CuriosityModel.fromJson(e))
-          .toList();
-
-      yield curiosityModel;
+      yield _getListOfCuriosityImages(response);
     }
+  }
+
+  List<CuriosityModel> _getListOfCuriosityImages(HttpResponse response) {
+    Map<String, dynamic> data =
+        Map<String, dynamic>.from(json.decode(response.data));
+    return (data['photos'] as List)
+        .map((e) => CuriosityModel.fromJson(e))
+        .toList();
   }
 }
