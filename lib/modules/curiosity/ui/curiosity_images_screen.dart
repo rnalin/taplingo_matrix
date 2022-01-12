@@ -22,41 +22,31 @@ class CuriosityImagesScreen extends StatelessWidget {
           stream: getMarsImagesInputPort.getMarsImages(),
           builder: (context, snapshot) {
             final curiosityImages = snapshot.data;
-            if (curiosityImages == null) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
             if (snapshot.hasError) {
               return const Center(
                 child: Text('Error'),
               );
             }
-            if (snapshot.connectionState == ConnectionState.waiting) {
+            if (curiosityImages == null) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
             }
-            if (snapshot.hasData && curiosityImages.isEmpty) {
+            if (curiosityImages.isEmpty) {
               return const Center(
                 child: Text('No images found'),
               );
             }
-            if (snapshot.connectionState == ConnectionState.done) {
-              return ListView.builder(
-                itemCount: curiosityImages.length,
-                itemBuilder: (context, index) {
-                  final curiosityImage = curiosityImages[index];
-                  return CuriosityImageItem(
-                    curiosity: curiosityImage,
-                    onTap: () => _redirectToCuriosityImageDetails(
-                        curiosityImage.urlImage),
-                  );
-                },
-              );
-            }
-            return const Center(
-              child: Text('Error on loading images'),
+            return ListView.builder(
+              itemCount: curiosityImages.length,
+              itemBuilder: (context, index) {
+                final curiosityImage = curiosityImages[index];
+                return CuriosityImageItem(
+                  curiosity: curiosityImage,
+                  onTap: () =>
+                      _redirectToCuriosityImageDetails(curiosityImage.urlImage),
+                );
+              },
             );
           },
         ));
