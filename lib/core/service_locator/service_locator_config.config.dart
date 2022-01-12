@@ -17,8 +17,8 @@ import '../../modules/curiosity/domain/usecases/get_mars_images_usecase.dart'
     as _i10;
 import '../../modules/curiosity/modules/curiosity_images_core_module.dart'
     as _i14;
-import '../http_client/http_client.dart' as _i3;
-import '../http_client/http_client_impl.dart' as _i4;
+import '../http_client/http_client_requests.dart' as _i3;
+import '../http_client/http_client.dart' as _i4;
 import '../ports/input/fetch_onboarding_input_port.dart' as _i11;
 import '../ports/output/fetch_onboarding_output_port.dart' as _i7;
 import '../repository/onboarding_repository.dart' as _i5;
@@ -33,10 +33,10 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
   final onboardingCoreModule = _$OnboardingCoreModule();
   final curiosityImagesCoreModule = _$CuriosityImagesCoreModule();
-  gh.factory<_i3.HttpClient>(() => _i4.HttpClientImpl());
+  gh.factory<_i3.HttpClientRequests>(() => _i4.HttpClient());
   gh.singleton<_i5.OnboardingRepository>(_i5.OnboardingRepository());
   gh.singleton<_i6.CuriosityRepository>(
-      _i6.CuriosityRepository(get<_i3.HttpClient>()));
+      _i6.CuriosityRepository(get<_i3.HttpClientRequests>()));
   gh.singleton<_i7.FetchOnboardingOutputPort>(onboardingCoreModule
       .fetchOnboardingOutputPort(get<_i5.OnboardingRepository>()));
   gh.singleton<_i8.FetchOnboardingUseCase>(

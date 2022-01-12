@@ -1,10 +1,14 @@
-abstract class HttpClient {
-  Future<HttpResponse> get(String url);
-}
+import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
+import 'package:taplingo_matrix/core/http_client/http_client_requests.dart';
 
-class HttpResponse {
-  final int? statusCode;
-  final dynamic data;
+@Injectable(as: HttpClientRequests)
+class HttpClient implements HttpClientRequests {
+  final client = http.Client();
 
-  HttpResponse({required this.statusCode, required this.data});
+  @override
+  Stream<HttpResponse> get(String url) async* {
+    final response = await client.get(Uri.parse(url));
+    yield HttpResponse(statusCode: response.statusCode, data: response.body);
+  }
 }
