@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:taplingo_matrix/core/routes/navigation_route.dart';
 import 'package:taplingo_matrix/core/routes/route_transition.dart';
 import 'package:taplingo_matrix/core/service_locator/service_locator_config.dart';
-import 'package:taplingo_matrix/modules/curiosity/ui/curiosity_images_screen.dart';
+import 'package:taplingo_matrix/modules/curiosity/presentation/ui/curiosity_images_screen.dart';
 
 class CuriosityRoute extends NavigationRoute {
   static String path = "/curiosity";

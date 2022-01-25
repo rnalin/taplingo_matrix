@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:taplingo_matrix/modules/curiosity/data/models/curiosity_model.dart';
 import 'package:taplingo_matrix/modules/curiosity/domain/ports/input/get_mars_images_input_port.dart';
 import 'package:taplingo_matrix/modules/curiosity/navigation/directions/curiosity_images_screen_directions.dart';
-import 'package:taplingo_matrix/modules/curiosity/ui/components/curiosity_image_item.dart';
+import 'package:taplingo_matrix/modules/curiosity/presentation/ui/components/curiosity_image_item.dart';
 
 class CuriosityImagesScreen extends StatelessWidget {
   const CuriosityImagesScreen({
