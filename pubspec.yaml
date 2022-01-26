@@ -31,8 +31,13 @@ dependencies:
   equatable: ^2.0.3
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.0.1
+  freezed: ^1.1.1
+  freezed_annotation: ^1.1.0
   http: ^0.13.4
   injectable: ^1.5.0
+  json_annotation: ^4.4.0
+  json_serializable: ^6.1.4
   mockito: ^5.0.17
 
 dev_dependencies:

@@ -42,10 +42,11 @@ class CuriosityImagesScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 final curiosityImage = curiosityImages[index];
                 return CuriosityImageItem(
-                  curiosity: curiosityImage,
-                  onTap: () =>
-                      _redirectToCuriosityImageDetails(curiosityImage.urlImage),
-                );
+                    curiosity: curiosityImage,
+                    onTap: () {
+                      testingFreezedWithCopy();
+                      _redirectToCuriosityImageDetails(curiosityImage.img_src);
+                    });
               },
             );
           },
@@ -54,5 +55,26 @@ class CuriosityImagesScreen extends StatelessWidget {
 
   void _redirectToCuriosityImageDetails(String urlImage) {
     CuriosityImagesScreenDirections(this).goToCuriosityImageDetails(urlImage);
+  }
+
+  void testingFreezedWithCopy() {
+    print('calling');
+    const curiosityA =
+        CuriosityModel(id: 1, img_src: 'A', earth_date: '01/01/2022');
+    const curiosityB =
+        CuriosityModel(id: 2, img_src: 'B', earth_date: '01/01/2022');
+    final curiosityACopy = curiosityA.copyWith(id: 2);
+
+    if (curiosityB.id == curiosityACopy.id) {
+      print("IDs são iguais");
+    } else {
+      print("IDs Não são iguais");
+    }
+
+    if (curiosityACopy.img_src == curiosityA.img_src) {
+      print("Imagens são iguais");
+    } else {
+      print("Imagens Não são iguais");
+    }
   }
 }

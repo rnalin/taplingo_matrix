@@ -17,8 +17,8 @@ import '../../modules/curiosity/domain/usecases/get_mars_images_usecase.dart'
     as _i10;
 import '../../modules/curiosity/modules/curiosity_images_core_module.dart'
     as _i14;
-import '../http_client/http_client_requests.dart' as _i3;
 import '../http_client/http_client.dart' as _i4;
+import '../http_client/http_client_requests.dart' as _i3;
 import '../ports/input/fetch_onboarding_input_port.dart' as _i11;
 import '../ports/output/fetch_onboarding_output_port.dart' as _i7;
 import '../repository/onboarding_repository.dart' as _i5;

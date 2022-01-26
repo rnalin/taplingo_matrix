@@ -1,19 +1,15 @@
-import 'package:taplingo_matrix/modules/curiosity/domain/entities/curiosity_entity.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+part 'curiosity_model.freezed.dart';
+part 'curiosity_model.g.dart';
 
-class CuriosityModel extends CuriosityEntity {
-  CuriosityModel(
-      {required int id, required String urlImage, required String earthDate})
-      : super(id: id, urlImage: urlImage, earthDate: earthDate);
+@freezed
+class CuriosityModel with _$CuriosityModel {
+  const factory CuriosityModel({
+    required int id,
+    required String img_src,
+    required String earth_date,
+  }) = _CuriosityModel;
 
-  factory CuriosityModel.fromJson(Map<String, dynamic> json) => CuriosityModel(
-        id: json["id"],
-        urlImage: json["img_src"],
-        earthDate: json["earth_date"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "url": urlImage,
-        "earth_date": earthDate,
-      };
+  factory CuriosityModel.fromJson(Map<String, dynamic> json) =>
+      _$CuriosityModelFromJson(json);
 }
